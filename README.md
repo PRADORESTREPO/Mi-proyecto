@@ -1,87 +1,43 @@
-# Sistema de Gestión de Inventario (SISTEMA INV PRADO.MAPR)
+# SISTEMA INV PRADO.MAPR
 
-Una aplicación de gestión de inventarios en tiempo real desarrollada en Python y adaptada con **Streamlit** para ofrecer una interfaz web interactiva, moderna y accesible desde cualquier navegador.
-
----
-
-## 📌 Características
-
-- **Gestión de Stock:** Agrega unidades a productos existentes o registra nuevos elementos automáticamente.
-- **Normalización de Texto:** Convierte las entradas a minúsculas para evitar duplicados por diferencias de mayúsculas/minúsculas (ej. "Manzana" y "manzana" se tratan como el mismo producto).
-- **Validación de Datos:** Evita registros vacíos y asegura el ingreso correcto de valores numéricos para el stock.
-- **Búsqueda y Eliminación:** Consulta rápida de stock por producto y eliminación definitiva de registros.
-- **Interfaz Web Interactiva:** Control intuitivo mediante barra lateral de navegación y notificaciones visuales sobre el estado del inventario.
+Una aplicación de consola desarrollada en Python para la gestión y control de inventarios de productos en tiempo real. El sistema permite registrar nuevos elementos o actualizar las cantidades de los existentes, realizar búsquedas puntuales de stock, eliminar registros obsoletos y consultar el catálogo completo de manera segura, estructurada y libre de fallos gracias a un sólido control de excepciones.
 
 ---
 
-## 🚀 Deploy y Adaptación a Streamlit
+## Funcionalidades
 
-Para desplegar este proyecto en un entorno web como **Streamlit Community Cloud**, se realizó una refactorización del código fuente original (creado inicialmente para ejecutarse en la consola/terminal).
-
-### 🤖 Asistencia con Inteligencia Artificial
-La migración de la consola a la interfaz web de Streamlit se llevó a cabo utilizando **Inteligencia Artificial (IA)** como asistente de código. La IA permitió adaptar la lógica síncrona de comandos por teclado a una arquitectura reactiva e interactiva propia de la web.
-
-### 🔄 Cambios principales aplicados al código fuente:
-
-1. **Reemplazo de Entrada y Salida Estándar:**
-   - Se eliminaron las funciones nativas `print()` e `input()`, las cuales bloqueaban la ejecución en servidores web.
-   - Se implementaron componentes gráficos de Streamlit como `st.text_input()`, `st.number_input()`, `st.button()` y `st.success() / st.error()`.
-
-2. **Gestión de Estado Persistente (`st.session_state`):**
-   - En consola, la variable `inventario` permanecía viva dentro del ciclo `while True`. En Streamlit, la página se reejecuta desde el inicio con cada interacción.
-   - Se adaptó el diccionario de inventario para que se almacene dentro de `st.session_state.inventario`, garantizando que la información de los productos no se borre al presionar botones o cambiar de opción.
-
-3. **Navegación Visual:**
-   - Se sustituyó el menú impreso en texto por una barra de navegación lateral (`st.sidebar.selectbox`).
+- **Agregar producto:** Registra un nuevo producto y su cantidad o incrementa el stock si el producto ya existe. Permite salir del bucle de ingreso al presionar la tecla espacio (o presionar Enter con un texto vacío).
+- **Ver stock:** Visualiza el listado completo de todos los productos almacenados con sus respectivas unidades disponibles.
+- **Buscar producto:** Consulta la cantidad en existencia de un producto específico mediante una búsqueda por nombre.
+- **Eliminar producto:** Remueve definitivamente un producto del inventario mediante la eliminación de su clave en el diccionario.
+- **Normalización de texto:** Convierte los nombres ingresados a minúsculas para evitar registros duplicados por variaciones de mayúsculas/minúsculas y los muestra formateados con inicial mayúscula (`capitalize()`).
+- **Manejo integral de excepciones:** Captura errores de tipo de dato (`ValueError`), búsquedas fallidas (`KeyError`), salidas forzadas por teclado (`KeyboardInterrupt`) y entradas vacías en cada una de las opciones del menú.
 
 ---
 
-## 🛠️ Requisitos Previos
+## Cómo ejecutar
 
-- **Python 3.x**
-- **Streamlit**
+### Requisitos previos
+- **Python 3.x** instalado en el sistema.
 
-Para instalar la dependencia necesaria, ejecuta en tu terminal:
+### Pasos de ejecución local
 
-```bash
-pip install streamlit
-```
+1. Clonar o descargar este repositorio en tu equipo.
+2. Abrir la terminal o consola de comandos en la carpeta donde se encuentra el archivo `.py`.
+3. Ejecutar la aplicación con el comando:
+   ```bash
+   python nombre_del_archivo.py
 
----
+   """
 
-## 💻 Ejecución Local
+## SISTEMA INV PRADO.MAPR - Sistema de Gestión de Inventario
 
-1. **Clona o descarga** este repositorio en tu equipo.
-2. Abre la terminal en la carpeta principal del proyecto.
-3. Ejecuta la aplicación con el siguiente comando:
 
-```bash
-streamlit run app.py
-```
-
-4. El sistema abrirá automáticamente una pestaña en tu navegador predeterminado en `http://localhost:8501`.
-
----
-
-## 📋 Funcionalidades del Menú
-
-| Opción | Acción | Descripción |
-| :--- | :--- | :--- |
-| **Agregar producto** | Formulario de registro | Permite ingresar un producto y su cantidad enviándolo directamente a la memoria de la app. |
-| **Ver stock** | Vista de Inventario | Muestra el listado completo de productos registrados con sus respectivas unidades. |
-| **Buscar producto** | Consulta por nombre | Muestra en pantalla el stock disponible de un producto en específico. |
-| **Eliminar producto** | Borrado de registro | Remueve un producto del inventario de forma definitiva. |
-
----
-
-## 🌐 Despliegue en la Nube (Streamlit Cloud)
-
-Para publicar esta app de forma gratuita en la nube:
-
-1. Sube tu código junto con este `README.md` a tu repositorio en **GitHub**.
-2. Asegúrate de incluir un archivo `requirements.txt` que contenga la línea:
-   ```text
-   streamlit
-   ```
-3. Conecta tu cuenta de GitHub a [Streamlit Community Cloud](https://streamlit.io/cloud).
-4. Selecciona tu repositorio y la rama principal para realizar el **Deploy** instantáneo.
+🛠️ TECNOLOGÍAS USADAS:
+- Python 3: Lenguaje principal para la lógica de negocio, estructuras 
+  de datos (diccionarios) y control de excepciones.
+- Git & GitHub: Control de versiones y gestión de repositorio remoto.
+- Inteligencia Artificial (IA): Soporte en la refactorización, manejo 
+  de errores avanzado y generación de documentación.
+============================================================
+"""
